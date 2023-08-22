@@ -1,5 +1,6 @@
 import awal from "./assets/video/awal.mp4";
 import { CustomButton } from "./components/CustomButton";
+import CustomTemplate from "./components/CustomTemplate";
 
 function App() {
   return (
@@ -9,9 +10,7 @@ function App() {
         Your browser does not support the video tag.
       </video>
       <div className="absolute top-0 p-6 w-full h-full flex flex-col items-center justify-between">
-        <h1 className="text-3xl text-red-50 font-bold underline">
-          Hello world!
-        </h1>
+        <CustomTemplate title="1" message="Halo" width="w-full" />
         <CustomButton
           onTap={() => {
             console.log("first");

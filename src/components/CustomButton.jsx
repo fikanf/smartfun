@@ -19,14 +19,14 @@ export function CustomIconButton({ icon, onTap }) {
   return (
     <button type="button" className="relative w-24 h-24" onClick={handleClick}>
       <div
-        className={`absolute top-${isClicked ? 4 : 0} left-${
-          isClicked ? 4 : 0
+        className={`absolute top-${isClicked ? 2 : 0} left-${
+          isClicked ? 2 : 0
         } w-24 h-24 rounded-full bg-gray-800`}
       />
       <div
-        className={`absolute top-${isClicked ? 4 : 0} left-${
-          isClicked ? 4 : 0
-        } w-24 h-24 rounded-full bg-blue-900 flex items-center justify-center`}
+        className={`absolute top-${isClicked ? 2 : 0} left-${
+          isClicked ? 2 : 0
+        } w-24 h-24 rounded-full bg-biru flex items-center justify-center`}
       >
         {icon}
       </div>
@@ -35,13 +35,13 @@ export function CustomIconButton({ icon, onTap }) {
 }
 
 export function CustomButton({
-  title,
+  children,
   onTap,
   width = "w-96",
   height = "h-24",
 }) {
   CustomButton.propTypes = {
-    title: PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired,
     onTap: PropTypes.func.isRequired,
     width: PropTypes.string,
     height: PropTypes.string,
@@ -63,14 +63,14 @@ export function CustomButton({
       onClick={handleClick}
     >
       <div
-        className={`absolute top-4 left-4 ${width} ${height} rounded-xl bg-gray-800`}
+        className={`absolute top-2 left-2 ${width} ${height} rounded-xl bg-gray-800`}
       />
       <div
-        className={`absolute top-${isClicked ? 4 : 0} left-${
-          isClicked ? 4 : 0
-        } ${width} ${height} rounded-xl bg-blue-900 flex items-center justify-center`}
+        className={`absolute top-${isClicked ? 2 : 0} left-${
+          isClicked ? 2 : 0
+        } ${width} ${height} rounded-xl bg-biru flex items-center justify-center`}
       >
-        {title}
+        {children}
       </div>
     </button>
   );

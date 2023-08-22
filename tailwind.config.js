@@ -9,6 +9,10 @@ export default {
       fontFamily: {
         'league': ['"League Spartan"', 'sans-serif'],
       },
+      colors: {
+        'biru': '#20435B',
+        'kuning': '#FEF794',
+      },
     },
   },
   plugins: [],

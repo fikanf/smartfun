@@ -22,7 +22,7 @@ function App() {
       <div className="absolute bottom-0 right-0 p-6">
         <CustomIconButton
           onTap={() => {
-            console.log("first");
+            window.location.href = "/account";
           }}
         >
           <svg

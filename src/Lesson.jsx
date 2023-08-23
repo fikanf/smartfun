@@ -74,7 +74,11 @@ function Lesson() {
           arrows={false}
           className="w-full"
         >
-          <CardLesson />
+          <CardLesson
+            onTap={() => {
+              window.location.href = "/lesson/quiz";
+            }}
+          />
           <CardLesson />
           <CardLesson />
         </Carousel>

@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import Account from "./Account.jsx";
 import Home from "./Home.jsx";
 import Lesson from "./Lesson.jsx";
+import Quiz from "./Quiz";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/lesson",
     element: <Lesson />,
+  },
+  {
+    path: "/lesson/quiz",
+    element: <Quiz />,
   },
 ]);
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-export function CustomIconButton({ icon, onTap }) {
+export function CustomIconButton({ children, onTap }) {
   CustomIconButton.propTypes = {
-    icon: PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired,
     onTap: PropTypes.func.isRequired,
   };
 
@@ -19,16 +19,14 @@ export function CustomIconButton({ icon, onTap }) {
   return (
     <button type="button" className="relative w-24 h-24" onClick={handleClick}>
       <div
-        className={`absolute top-${isClicked ? 2 : 0} left-${
-          isClicked ? 2 : 0
-        } w-24 h-24 rounded-full bg-gray-800`}
+        className={`absolute top-2 left-2 w-24 h-24 rounded-full bg-gray-800`}
       />
       <div
         className={`absolute top-${isClicked ? 2 : 0} left-${
           isClicked ? 2 : 0
         } w-24 h-24 rounded-full bg-biru flex items-center justify-center`}
       >
-        {icon}
+        {children}
       </div>
     </button>
   );

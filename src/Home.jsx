@@ -13,7 +13,7 @@ function Home() {
       </CustomButton>
       <CustomButton
         onTap={() => {
-          window.location.href = "/home";
+          window.location.href = "/lesson";
         }}
         width="w-1/2"
       >

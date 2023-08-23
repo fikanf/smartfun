@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import App from "./App.jsx";
 import "./index.css";
+import App from "./App.jsx";
 import Account from "./Account.jsx";
 import Home from "./Home.jsx";
+import Lesson from "./Lesson.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/lesson",
+    element: <Lesson />,
   },
 ]);
 

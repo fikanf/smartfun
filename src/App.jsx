@@ -13,7 +13,7 @@ function App() {
         <CustomTemplate title="1" message="Halo" width="w-full" />
         <CustomButton
           onTap={() => {
-            console.log("first");
+            window.location.href = "/home";
           }}
         >
           <p className="text-6xl font-bold text-kuning mt-3">MULAI</p>

@@ -61,12 +61,12 @@ export function CustomButton({
       onClick={handleClick}
     >
       <div
-        className={`absolute top-2 left-2 ${width} ${height} rounded-xl bg-gray-800`}
+        className={`absolute top-2 left-2 w-full ${height} rounded-xl bg-gray-800`}
       />
       <div
         className={`absolute top-${isClicked ? 2 : 0} left-${
           isClicked ? 2 : 0
-        } ${width} ${height} rounded-xl bg-biru flex items-center justify-center`}
+        } w-full ${height} rounded-xl bg-biru flex items-center justify-center`}
       >
         {children}
       </div>

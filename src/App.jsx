@@ -1,8 +1,45 @@
+import awal from "./assets/video/awal.mp4";
+import { CustomButton, CustomIconButton } from "./components/CustomButton";
+import CustomTemplate from "./components/CustomTemplate";
+
 function App() {
   return (
-    <>
-      <h1 className="text-3xl text-red-50 font-bold underline">Hello world!</h1>
-    </>
+    <div className="static font-league">
+      <video autoPlay muted loop className="w-screen h-screen object-cover">
+        <source src={awal} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute top-0 p-6 w-full h-full flex flex-col items-center justify-between">
+        <CustomTemplate title="1" message="Halo" width="w-full" />
+        <CustomButton
+          onTap={() => {
+            window.location.href = "/home";
+          }}
+        >
+          <p className="text-6xl font-bold text-kuning mt-3">MULAI</p>
+        </CustomButton>
+      </div>
+      <div className="absolute bottom-0 right-0 p-6">
+        <CustomIconButton
+          onTap={() => {
+            window.location.href = "/account";
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-16 h-16 fill-kuning"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </CustomIconButton>
+      </div>
+    </div>
   );
 }
 

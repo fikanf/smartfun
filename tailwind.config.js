@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'league': ['"League Spartan"', 'sans-serif'],
+      },
+      colors: {
+        'biru': '#20435B',
+        'kuning': '#FEF794',
+      },
+    },
   },
   plugins: [],
 }

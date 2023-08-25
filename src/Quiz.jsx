@@ -6,8 +6,10 @@ import bg from "./assets/illustration/bg_field.png";
 import benar from "./assets/illustration/benar.png";
 import salah from "./assets/illustration/salah.png";
 
+import gifA from "./assets/gif/a.gif";
+import gifB from "./assets/gif/b.gif";
+
 import cerita from "./assets/video/cerita.mp4";
-import jawaban from "./assets/video/jawaban.mp4";
 
 import { CustomIconButton } from "./components/CustomButton";
 import CustomModal from "./components/CustomModal";
@@ -84,16 +86,12 @@ function Quiz() {
             }}
             className="w-[650px] h-[500px] relative"
           >
-            <img src={salah} alt="Answer 2" className="w-[650px] h-[500px]" />
-            <video
-              autoPlay
-              muted
-              loop
+            <img src={salah} alt="Answer 1" className="w-[650px] h-[500px]" />
+            <img
+              src={gifA}
+              alt="Gif Answer 1"
               className="absolute top-0 h-64 m-10 object-cover"
-            >
-              <source src={jawaban} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            />
           </button>
           <button
             type="button"
@@ -105,16 +103,12 @@ function Quiz() {
             }}
             className="w-[650px] h-[500px] relative"
           >
-            <img src={benar} alt="Answer 1" className="w-[650px] h-[500px]" />
-            <video
-              autoPlay
-              muted
-              loop
+            <img src={benar} alt="Answer 2" className="w-[650px] h-[500px]" />
+            <img
+              src={gifB}
+              alt="Gif Answer 2"
               className="absolute top-0 h-64 m-10 object-cover"
-            >
-              <source src={jawaban} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            />
           </button>
         </div>
       </div>

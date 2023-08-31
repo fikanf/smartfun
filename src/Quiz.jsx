@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import quiz from "./assets/illustration/quiz_title.png";
 import question from "./assets/illustration/soal.png";
@@ -10,11 +10,38 @@ import gifA from "./assets/gif/a.gif";
 import gifB from "./assets/gif/b.gif";
 
 import cerita from "./assets/video/cerita.mp4";
+import materi_disiplin from "./assets/video/materi_disiplin.mp4";
 
 import { CustomIconButton } from "./components/CustomButton";
 import CustomModal from "./components/CustomModal";
+import { useLocation } from "react-router-dom";
+
+const quizes = [
+  {
+    videoPath: cerita,
+  },
+  {
+    videoPath: materi_disiplin,
+  },
+];
+
+// the query string for you.
+function useQuery() {
+  const { search } = useLocation();
+
+  return useMemo(() => new URLSearchParams(search), [search]);
+}
 
 function Quiz() {
+  let query = useQuery();
+  let videoIndex = Number(query.get("index")); // convert string to number
+
+  // Check if videoIndex is a valid index for quizes array
+  if (isNaN(videoIndex) || videoIndex < 0 || videoIndex >= quizes.length) {
+    console.error(`Invalid video index: ${videoIndex}`);
+    videoIndex = 0; // default to first video
+  }
+
   const [showQuestions, setShowQuestions] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
@@ -49,7 +76,7 @@ function Quiz() {
           showQuestions ? "hidden" : ""
         } w-screen h-screen object-cover`}
       >
-        <source src={cerita} type="video/mp4" />
+        <source src={quizes[videoIndex].videoPath} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div

@@ -6,6 +6,15 @@ import PropTypes from "prop-types";
 import { CustomIconButton } from "./components/CustomButton";
 import CustomTemplate from "./components/CustomTemplate";
 
+const quiz = [
+  {
+    title: "Halo semua",
+  },
+  {
+    title: "Halo semua",
+  },
+];
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -74,13 +83,16 @@ function Lesson() {
           arrows={false}
           className="w-full"
         >
-          <CardLesson
-            onTap={() => {
-              window.location.href = "/lesson/quiz";
-            }}
-          />
-          <CardLesson />
-          <CardLesson />
+          {quiz.map((data, index) => {
+            return (
+              <CardLesson
+                key={index}
+                onTap={() => {
+                  window.location.href = `/lesson/quiz?index=${index}`;
+                }}
+              />
+            );
+          })}
         </Carousel>
         <CustomIconButton
           onTap={() => {

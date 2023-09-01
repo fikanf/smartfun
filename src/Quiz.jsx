@@ -11,6 +11,20 @@ import gifB from "./assets/gif/b.gif";
 
 import cerita from "./assets/video/cerita.mp4";
 import materi_disiplin from "./assets/video/materi_disiplin.mp4";
+import materi_tanggung_jawab from "./assets/video/materi_tanggung_jawab.mp4";
+
+import kuis_tanggung_jawab from "./assets/video/kuis_tanggung_jawab.mp4";
+
+import soal1_tanggung_jawab from "./assets/illustration/tanggung_jawab/soal1.jpg";
+import soal2_tanggung_jawab from "./assets/illustration/tanggung_jawab/soal2.jpg";
+import soal3_tanggung_jawab from "./assets/illustration/tanggung_jawab/soal3.jpg";
+
+import tanggung_jawab_1_a from "./assets/video/tanggung_jawab/kuis1_a.mp4";
+import tanggung_jawab_1_b from "./assets/video/tanggung_jawab/kuis1_b.mp4";
+import tanggung_jawab_2_a from "./assets/video/tanggung_jawab/kuis2_a.mp4";
+import tanggung_jawab_2_b from "./assets/video/tanggung_jawab/kuis2_b.mp4";
+import tanggung_jawab_3_a from "./assets/video/tanggung_jawab/kuis3_a.mp4";
+import tanggung_jawab_3_b from "./assets/video/tanggung_jawab/kuis3_b.mp4";
 
 import { CustomIconButton } from "./components/CustomButton";
 import CustomModal from "./components/CustomModal";
@@ -18,10 +32,33 @@ import { useLocation } from "react-router-dom";
 
 const quizes = [
   {
-    videoPath: cerita,
+    materiPath: cerita,
+    quizPath: cerita,
   },
   {
-    videoPath: materi_disiplin,
+    materiPath: materi_disiplin,
+    quizPath: materi_disiplin,
+  },
+  {
+    materiPath: materi_tanggung_jawab,
+    quizPath: kuis_tanggung_jawab,
+    soal: [
+      {
+        pertanyaan: soal1_tanggung_jawab,
+        jawaban_a: tanggung_jawab_1_a,
+        jawaban_b: tanggung_jawab_1_b,
+      },
+      {
+        pertanyaan: soal2_tanggung_jawab,
+        jawaban_a: tanggung_jawab_2_a,
+        jawaban_b: tanggung_jawab_2_b,
+      },
+      {
+        pertanyaan: soal3_tanggung_jawab,
+        jawaban_a: tanggung_jawab_3_a,
+        jawaban_b: tanggung_jawab_3_b,
+      },
+    ],
   },
 ];
 
@@ -42,14 +79,20 @@ function Quiz() {
     videoIndex = 0; // default to first video
   }
 
-  const [showQuestions, setShowQuestions] = useState(false);
+  const [showMateri, setShowMateri] = useState(true);
+  const [showQuiz, setShowQuiz] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
   const [modalDesc, setmodalDesc] = useState("");
 
-  const handleVideoEnd = () => {
+  const handleMateriVideoEnd = () => {
     console.log("Video has ended");
-    setShowQuestions(true);
+    setShowMateri(false);
+  };
+
+  const handleQuizVideoEnd = () => {
+    console.log("Video has ended");
+    setShowQuiz(false);
   };
 
   function toggleModal(title, desc) {
@@ -71,16 +114,29 @@ function Quiz() {
       <video
         autoPlay
         controls
-        onEnded={() => handleVideoEnd()}
+        onEnded={() => handleMateriVideoEnd()}
         className={`${
-          showQuestions ? "hidden" : ""
+          showMateri ? "" : "hidden"
         } w-screen h-screen object-cover`}
       >
-        <source src={quizes[videoIndex].videoPath} type="video/mp4" />
+        <source src={quizes[videoIndex].materiPath} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <video
+        autoPlay
+        controls
+        onEnded={() => handleQuizVideoEnd()}
+        className={`${
+          showMateri ? "hidden" : showQuiz ? "" : "hidden"
+        } w-screen h-screen object-cover`}
+      >
+        <source src={kuis_tanggung_jawab} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div
-        className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col justify-between"
+        className={`${
+          showQuiz ? "hidden" : "flex"
+        } w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between`}
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="flex flex-row justify-between">

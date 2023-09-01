@@ -13,6 +13,9 @@ const quiz = [
   {
     title: "Halo semua",
   },
+  {
+    title: "Halo semua",
+  },
 ];
 
 const responsive = {

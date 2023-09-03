@@ -8,7 +8,7 @@ import cerita from "./assets/video/cerita.mp4";
 import materi_disiplin from "./assets/video/materi_disiplin.mp4";
 import materi_tanggung_jawab from "./assets/video/materi_tanggung_jawab.mp4";
 
-import kuis_tanggung_jawab from "./assets/video/kuis_tanggung_jawab.mp4";
+import kuis_tanggung_jawab from "./assets/video/tanggung_jawab/kuis_tanggung_jawab.mp4";
 
 import soal1_tanggung_jawab from "./assets/illustration/tanggung_jawab/soal1.jpg";
 import soal2_tanggung_jawab from "./assets/illustration/tanggung_jawab/soal2.jpg";

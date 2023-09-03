@@ -3,11 +3,6 @@ import { useMemo, useState } from "react";
 import quiz from "./assets/illustration/quiz_title.png";
 import question from "./assets/illustration/soal.png";
 import bg from "./assets/illustration/bg_field.png";
-import benar from "./assets/illustration/benar.png";
-import salah from "./assets/illustration/salah.png";
-
-import gifA from "./assets/gif/a.gif";
-import gifB from "./assets/gif/b.gif";
 
 import cerita from "./assets/video/cerita.mp4";
 import materi_disiplin from "./assets/video/materi_disiplin.mp4";
@@ -34,6 +29,11 @@ const quizes = [
   {
     materiPath: cerita,
     quizPath: cerita,
+    soal: [
+      {
+        pertanyaan: question,
+      },
+    ],
   },
   {
     materiPath: materi_disiplin,
@@ -79,20 +79,24 @@ function Quiz() {
     videoIndex = 0; // default to first video
   }
 
-  const [showMateri, setShowMateri] = useState(true);
-  const [showQuiz, setShowQuiz] = useState(true);
+  const [materiVideoEnded, setMateriVideoEnded] = useState(false);
+  const [quizVideoEnded, setQuizVideoEnded] = useState(true);
+
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
   const [modalDesc, setmodalDesc] = useState("");
 
+  const [quizCount, setQuizCount] = useState(0);
+
   const handleMateriVideoEnd = () => {
     console.log("Video has ended");
-    setShowMateri(false);
+    setMateriVideoEnded(true);
+    setQuizVideoEnded(false);
   };
 
   const handleQuizVideoEnd = () => {
     console.log("Video has ended");
-    setShowQuiz(false);
+    setQuizVideoEnded(true);
   };
 
   function toggleModal(title, desc) {
@@ -108,26 +112,30 @@ function Quiz() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          window.location.href = "/lesson";
+          // window.location.href = "/lesson";
+          setQuizCount(quizCount + 1);
+          setShowModal((prev) => !prev);
         }}
       />
+      {/* // First video */}
       <video
         autoPlay
         controls
         onEnded={() => handleMateriVideoEnd()}
         className={`${
-          showMateri ? "" : "hidden"
+          materiVideoEnded ? "hidden" : ""
         } w-screen h-screen object-cover`}
       >
         <source src={quizes[videoIndex].materiPath} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      {/* // Second video */}
       <video
-        autoPlay
+        autoPlay={materiVideoEnded}
         controls
         onEnded={() => handleQuizVideoEnd()}
         className={`${
-          showMateri ? "hidden" : showQuiz ? "" : "hidden"
+          quizVideoEnded ? "hidden" : ""
         } w-screen h-screen object-cover`}
       >
         <source src={kuis_tanggung_jawab} type="video/mp4" />
@@ -135,13 +143,24 @@ function Quiz() {
       </video>
       <div
         className={`${
-          showQuiz ? "hidden" : "flex"
+          quizVideoEnded ? "flex" : "hidden"
         } w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between`}
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="flex flex-row justify-between">
           <img src={quiz} alt="Quiz Title" className="w-48 h-24" />
-          <img src={question} alt="Question" className="w-[700px] h-48" />
+          {quizes[videoIndex].soal.map((data, index) => {
+            return (
+              <img
+                key={index}
+                src={data.pertanyaan}
+                alt="Question"
+                className={`${
+                  index == quizCount ? "" : "hidden"
+                } w-[700px] h-48`}
+              />
+            );
+          })}
           <CustomIconButton
             onTap={() => {
               window.location.href = "/lesson";
@@ -161,39 +180,53 @@ function Quiz() {
             </svg>
           </CustomIconButton>
         </div>
-        <div className="flex flex-row justify-between">
-          <button
-            type="button"
-            onClick={() => {
-              toggleModal("Anda Salah", "Coba lagi yaa tahun depan!!!");
-            }}
-            className="w-[650px] h-[500px] relative"
-          >
-            <img src={salah} alt="Answer 1" className="w-[650px] h-[500px]" />
-            <img
-              src={gifA}
-              alt="Gif Answer 1"
-              className="absolute top-0 h-64 m-10 object-cover"
-            />
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              toggleModal(
-                "Anda Benar",
-                "Selamat anda telah menjawab soal berikut dengan benar"
-              );
-            }}
-            className="w-[650px] h-[500px] relative"
-          >
-            <img src={benar} alt="Answer 2" className="w-[650px] h-[500px]" />
-            <img
-              src={gifB}
-              alt="Gif Answer 2"
-              className="absolute top-0 h-64 m-10 object-cover"
-            />
-          </button>
-        </div>
+        {quizes[videoIndex].soal.map((data, index) => {
+          return (
+            <div
+              key={index}
+              className={`${
+                index == quizCount ? "flex" : "hidden"
+              } flex-row justify-between`}
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  toggleModal("Anda Salah", "Coba lagi yaa tahun depan!!!");
+                }}
+              >
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  className="w-[650px] h-[500px] object-cover"
+                >
+                  <source src={data.jawaban_a} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  toggleModal(
+                    "Anda Benar",
+                    "Selamat anda telah menjawab soal berikut dengan benar"
+                  );
+                }}
+                className="w-[650px] h-[500px] relative"
+              >
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  className="w-[650px] h-[500px] object-cover"
+                >
+                  <source src={data.jawaban_b} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

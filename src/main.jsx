@@ -11,6 +11,7 @@ import Lesson from "./Lesson.jsx";
 import TanggungJawab from "./pages/quiz/TanggungJawab";
 import KontrolEmosi from "./pages/quiz/KontrolEmosi";
 import Kejujuran from "./pages/quiz/Kejujuran";
+import Disiplin from "./pages/quiz/Disiplin";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/quiz/kejujuran",
     element: <Kejujuran />,
+  },
+  {
+    path: "/quiz/disiplin",
+    element: <Disiplin />,
   },
 ]);
 

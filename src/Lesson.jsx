@@ -14,7 +14,10 @@ const quiz = [
     path: "/quiz/kontrol_emosi",
   },
   {
-    path: "tanggung_jawab",
+    path: "/quiz/kejujuran",
+  },
+  {
+    path: "/quiz/disiplin",
   },
 ];
 

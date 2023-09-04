@@ -7,7 +7,9 @@ import App from "./App.jsx";
 import Account from "./Account.jsx";
 import Home from "./Home.jsx";
 import Lesson from "./Lesson.jsx";
-import Quiz from "./Quiz";
+
+import TanggungJawab from "./pages/quiz/TanggungJawab";
+import KontrolEmosi from "./pages/quiz/KontrolEmosi";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +28,17 @@ const router = createBrowserRouter([
     path: "/lesson",
     element: <Lesson />,
   },
+  // {
+  //   path: "/lesson/quiz",
+  //   element: <Quiz />,
+  // },
   {
-    path: "/lesson/quiz",
-    element: <Quiz />,
+    path: "/quiz/tanggung_jawab",
+    element: <TanggungJawab />,
+  },
+  {
+    path: "/quiz/kontrol_emosi",
+    element: <KontrolEmosi />,
   },
 ]);
 

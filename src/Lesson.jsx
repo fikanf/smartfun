@@ -8,13 +8,13 @@ import CustomTemplate from "./components/CustomTemplate";
 
 const quiz = [
   {
-    title: "Halo semua",
+    path: "/quiz/tanggung_jawab",
   },
   {
-    title: "Halo semua",
+    path: "/quiz/kontrol_emosi",
   },
   {
-    title: "Halo semua",
+    path: "tanggung_jawab",
   },
 ];
 
@@ -91,7 +91,7 @@ function Lesson() {
               <CardLesson
                 key={index}
                 onTap={() => {
-                  window.location.href = `/lesson/quiz?index=${index}`;
+                  window.location.href = data.path;
                 }}
               />
             );

@@ -4,7 +4,7 @@ import bg from "../../assets/illustration/bg_field.png";
 import quiz from "../../assets/illustration/quiz_title.png";
 import question from "../../assets/illustration/kontrol_emosi/soal.png";
 
-import cerita from "../../assets/video/cerita.mp4";
+import materi_mengontrol_emosi from "../../assets/video/kontrol_emosi/materi_mengontrol_emosi.mp4";
 
 import kuis_mengontrol_emosi from "../../assets/video/kontrol_emosi/kuis_mengontrol_emosi.mp4";
 
@@ -65,7 +65,7 @@ function KontrolEmosi() {
           materiVideoEnded ? "hidden" : ""
         } w-screen h-screen object-cover`}
       >
-        <source src={cerita} type="video/mp4" />
+        <source src={materi_mengontrol_emosi} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* // Second video */}

@@ -1,9 +1,8 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import quiz from "../../assets/illustration/quiz_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import materi_disiplin from "../../assets/video/materi_disiplin.mp4";
 import materi_tanggung_jawab from "../../assets/video/materi_tanggung_jawab.mp4";
 
 import kuis_tanggung_jawab from "../../assets/video/tanggung_jawab/kuis_tanggung_jawab.mp4";
@@ -19,55 +18,28 @@ import tanggung_jawab_2_b from "../../assets/video/tanggung_jawab/kuis2_b.mp4";
 import tanggung_jawab_3_a from "../../assets/video/tanggung_jawab/kuis3_a.mp4";
 import tanggung_jawab_3_b from "../../assets/video/tanggung_jawab/kuis3_b.mp4";
 
-import { useLocation } from "react-router-dom";
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
 
-const quizes = [
+const soal = [
   {
-    materiPath: materi_disiplin,
-    quizPath: materi_disiplin,
+    pertanyaan: soal1_tanggung_jawab,
+    jawaban_a: tanggung_jawab_1_a,
+    jawaban_b: tanggung_jawab_1_b,
   },
   {
-    materiPath: materi_tanggung_jawab,
-    quizPath: kuis_tanggung_jawab,
-    soal: [
-      {
-        pertanyaan: soal1_tanggung_jawab,
-        jawaban_a: tanggung_jawab_1_a,
-        jawaban_b: tanggung_jawab_1_b,
-      },
-      {
-        pertanyaan: soal2_tanggung_jawab,
-        jawaban_a: tanggung_jawab_2_a,
-        jawaban_b: tanggung_jawab_2_b,
-      },
-      {
-        pertanyaan: soal3_tanggung_jawab,
-        jawaban_a: tanggung_jawab_3_a,
-        jawaban_b: tanggung_jawab_3_b,
-      },
-    ],
+    pertanyaan: soal2_tanggung_jawab,
+    jawaban_a: tanggung_jawab_2_a,
+    jawaban_b: tanggung_jawab_2_b,
+  },
+  {
+    pertanyaan: soal3_tanggung_jawab,
+    jawaban_a: tanggung_jawab_3_a,
+    jawaban_b: tanggung_jawab_3_b,
   },
 ];
 
-// the query string for you.
-function useQuery() {
-  const { search } = useLocation();
-
-  return useMemo(() => new URLSearchParams(search), [search]);
-}
-
 function TanggungJawab() {
-  let query = useQuery();
-  let videoIndex = Number(query.get("index")); // convert string to number
-
-  // Check if videoIndex is a valid index for quizes array
-  if (isNaN(videoIndex) || videoIndex < 0 || videoIndex >= quizes.length) {
-    console.error(`Invalid video index: ${videoIndex}`);
-    videoIndex = 0; // default to first video
-  }
-
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quizVideoEnded, setQuizVideoEnded] = useState(true);
 
@@ -115,7 +87,7 @@ function TanggungJawab() {
           materiVideoEnded ? "hidden" : ""
         } w-screen h-screen object-cover`}
       >
-        <source src={quizes[videoIndex].materiPath} type="video/mp4" />
+        <source src={materi_tanggung_jawab} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* // Second video */}
@@ -138,7 +110,7 @@ function TanggungJawab() {
       >
         <div className="flex flex-row justify-between">
           <img src={quiz} alt="Quiz Title" className="w-48 h-24" />
-          {quizes[videoIndex].soal.map((data, index) => {
+          {soal.map((data, index) => {
             return (
               <img
                 key={index}
@@ -169,7 +141,7 @@ function TanggungJawab() {
             </svg>
           </CustomIconButton>
         </div>
-        {quizes[videoIndex].soal.map((data, index) => {
+        {soal.map((data, index) => {
           return (
             <div
               key={index}

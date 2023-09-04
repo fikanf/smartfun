@@ -3,7 +3,7 @@ import { useState } from "react";
 import quiz from "../../assets/illustration/quiz_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import materi_tanggung_jawab from "../../assets/video/materi_tanggung_jawab.mp4";
+import materi_tanggung_jawab from "../../assets/video/tanggung_jawab/materi_tanggung_jawab.mp4";
 
 import kuis_tanggung_jawab from "../../assets/video/tanggung_jawab/kuis_tanggung_jawab.mp4";
 

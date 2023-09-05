@@ -100,7 +100,7 @@ function Disiplin() {
       </video>
       <div
         className={`${
-          quizVideoEnded ? "flex" : "hidden"
+          quizVideoEnded && materiVideoEnded ? "flex" : "hidden"
         } w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between`}
         style={{ backgroundImage: `url(${bg})` }}
       >

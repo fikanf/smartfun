@@ -11,14 +11,6 @@ function Home() {
       <div className="absolute top-0 w-screen h-screen p-6 flex flex-col gap-6 justify-center">
         <CustomButton
           onTap={() => {
-            window.location.href = "/home";
-          }}
-          width="w-1/2"
-        >
-          <p className="text-6xl font-bold text-kuning">Tutorial</p>
-        </CustomButton>
-        <CustomButton
-          onTap={() => {
             window.location.href = "/lesson";
           }}
           width="w-1/2"

@@ -72,7 +72,6 @@ function Kejujuran() {
         Your browser does not support the video tag.
       </video>
       {/* // Second video */}
-      {/* {(quizCount == 0) ? ( */}
       <div className={`${quizCount == 0 ? "" : "hidden"}`}>
         <video
           autoPlay={materiVideoEnded}

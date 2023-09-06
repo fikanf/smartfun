@@ -6,12 +6,16 @@ import "./index.css";
 import App from "./App.jsx";
 import Account from "./Account.jsx";
 import Home from "./Home.jsx";
+
 import Lesson from "./Lesson.jsx";
 
 import TanggungJawab from "./pages/quiz/TanggungJawab";
 import KontrolEmosi from "./pages/quiz/KontrolEmosi";
 import Kejujuran from "./pages/quiz/Kejujuran";
 import Disiplin from "./pages/quiz/Disiplin";
+
+import Game from "./Game";
+import Puzzle from "./pages/game/Puzzle";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +49,14 @@ const router = createBrowserRouter([
   {
     path: "/quiz/disiplin",
     element: <Disiplin />,
+  },
+  {
+    path: "/game",
+    element: <Game />,
+  },
+  {
+    path: "/game/puzzle",
+    element: <Puzzle />,
   },
 ]);
 

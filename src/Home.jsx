@@ -19,6 +19,14 @@ function Home() {
         </CustomButton>
         <CustomButton
           onTap={() => {
+            window.location.href = "/game";
+          }}
+          width="w-1/2"
+        >
+          <p className="text-6xl font-bold text-kuning">Permainan</p>
+        </CustomButton>
+        <CustomButton
+          onTap={() => {
             window.location.href = "/";
           }}
           width="w-1/2"

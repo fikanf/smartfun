@@ -9,6 +9,7 @@ import raveni from "../../assets/illustration/puzzle/raveni.png";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import { useEffect, useState } from "react";
+import CustomModal from "../../components/CustomModal";
 
 const images = [
   { id: 1, uniqueId: 1, image: fika },
@@ -23,6 +24,16 @@ const images = [
 ];
 
 function Puzzle() {
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setmodalTitle] = useState("");
+  const [modalDesc, setmodalDesc] = useState("");
+
+  function toggleModal(title, desc) {
+    setmodalTitle(title);
+    setmodalDesc(desc);
+    setShowModal((prev) => !prev);
+  }
+
   const [shuffledImages, setShuffledImages] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
   const [matchedImages, setMatchedImages] = useState([]);
@@ -50,6 +61,16 @@ function Puzzle() {
     }
   }, [selectedImages]);
 
+  useEffect(() => {
+    if (matchedImages.length === 4) {
+      // alert("Congratulations, you have found all matches!");
+      toggleModal(
+        "Anda Benar",
+        "Selamat anda telah menemukan semua gambar yang sama"
+      );
+    }
+  }, [matchedImages]);
+
   function handleImageClick(id, uniqueId, image) {
     if (selectedImages.length === 2) {
       return;
@@ -59,58 +80,69 @@ function Puzzle() {
   }
 
   return (
-    <div
-      className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col justify-between"
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <div className="flex flex-row justify-between">
-        <img src={puzzle} alt="Puzzle Title" className="w-60 h-24" />
-        <CustomIconButton
-          onTap={() => {
-            window.location.href = "/lesson";
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-16 h-16 fill-kuning"
+    <>
+      <CustomModal
+        show={showModal}
+        title={modalTitle}
+        desc={modalDesc}
+        onClose={() => {
+          window.location.href = "/game";
+          // setShowModal((prev) => !prev);
+        }}
+      />
+      <div
+        className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col justify-between"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className="flex flex-row justify-between">
+          <img src={puzzle} alt="Puzzle Title" className="w-60 h-24" />
+          <CustomIconButton
+            onTap={() => {
+              window.location.href = "/game";
+            }}
           >
-            <path
-              fillRule="evenodd"
-              d="M20.25 12a.75.75 0 01-.75.75H6.31l5.47 5.47a.75.75 0 11-1.06 1.06l-6.75-6.75a.75.75 0 010-1.06l6.75-6.75a.75.75 0 111.06 1.06l-5.47 5.47H19.5a.75.75 0 01.75.75z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </CustomIconButton>
-      </div>
-      <div className="grid grid-rows-3 grid-flow-col place-content-center gap-4 mt-6">
-        {shuffledImages.map((data, index) => {
-          return (
-            <button
-              key={index}
-              type="button"
-              onClick={() =>
-                handleImageClick(data.id, data.uniqueId, data.image)
-              }
-              className="w-60 h-48 bg-biru"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-16 h-16 fill-kuning"
             >
-              <img
-                src={data.image}
-                alt={`Puzzle Image ${index}`}
-                className={`w-60 h-48 object-cover object-top ${
-                  selectedImages.find(
-                    (image) => image.uniqueId === data.uniqueId
-                  ) || matchedImages.includes(data.id)
-                    ? ""
-                    : "hidden"
-                }`}
+              <path
+                fillRule="evenodd"
+                d="M20.25 12a.75.75 0 01-.75.75H6.31l5.47 5.47a.75.75 0 11-1.06 1.06l-6.75-6.75a.75.75 0 010-1.06l6.75-6.75a.75.75 0 111.06 1.06l-5.47 5.47H19.5a.75.75 0 01.75.75z"
+                clipRule="evenodd"
               />
-            </button>
-          );
-        })}
+            </svg>
+          </CustomIconButton>
+        </div>
+        <div className="grid grid-rows-3 grid-flow-col place-content-center gap-4 mt-6">
+          {shuffledImages.map((data, index) => {
+            return (
+              <button
+                key={index}
+                type="button"
+                onClick={() =>
+                  handleImageClick(data.id, data.uniqueId, data.image)
+                }
+                className="w-60 h-48 bg-biru"
+              >
+                <img
+                  src={data.image}
+                  alt={`Puzzle Image ${index}`}
+                  className={`w-60 h-48 object-cover object-top ${
+                    selectedImages.find(
+                      (image) => image.uniqueId === data.uniqueId
+                    ) || matchedImages.includes(data.id)
+                      ? ""
+                      : "hidden"
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

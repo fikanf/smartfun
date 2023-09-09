@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
@@ -11,7 +12,6 @@ import raveni from "../../assets/illustration/puzzle/raveni.png";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
-import { useNavigate } from "react-router-dom";
 
 const images = [
   { id: 1, uniqueId: 1, image: fika },

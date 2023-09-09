@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import bg from "../../assets/illustration/bg_field.png";
 import quiz from "../../assets/illustration/quiz_title.png";
@@ -16,7 +17,6 @@ import jawaban_b from "../../assets/video/kontrol_emosi/jawaban_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
-import { useNavigate } from "react-router-dom";
 
 function KontrolEmosi() {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import quiz from "../../assets/illustration/quiz_title.png";
 import bg from "../../assets/illustration/bg_lab.png";
@@ -18,7 +19,6 @@ import disiplin_3_b from "../../assets/video/disiplin/kuis3_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
-import { useNavigate } from "react-router-dom";
 
 const soal = [
   {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import quiz from "../../assets/illustration/quiz_title.png";
 
@@ -11,7 +12,6 @@ import kuis_kejujuran_2_soal from "../../assets/video/kejujuran/kuis_kejujuran_2
 
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
-import { useNavigate } from "react-router-dom";
 
 function Kejujuran() {
   const navigate = useNavigate();

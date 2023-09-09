@@ -1,7 +1,7 @@
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { useRef } from "react";
 import PropTypes from "prop-types";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import bg from "./assets/illustration/bg_papan_tulis.png";
 

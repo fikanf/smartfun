@@ -20,6 +20,7 @@ import tanggung_jawab_3_b from "../../assets/video/tanggung_jawab/kuis3_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const soal = [
   {
@@ -40,6 +41,8 @@ const soal = [
 ];
 
 function TanggungJawab() {
+  const navigate = useNavigate();
+
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quizVideoEnded, setQuizVideoEnded] = useState(true);
 
@@ -73,7 +76,6 @@ function TanggungJawab() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          // window.location.href = "/lesson";
           setQuizCount(quizCount + 1);
           setShowModal((prev) => !prev);
         }}
@@ -104,7 +106,7 @@ function TanggungJawab() {
       </video>
       <div
         className={`${
-          quizVideoEnded ? "flex" : "hidden"
+          quizVideoEnded && materiVideoEnded ? "flex" : "hidden"
         } w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between`}
         style={{ backgroundImage: `url(${bg})` }}
       >
@@ -124,7 +126,7 @@ function TanggungJawab() {
           })}
           <CustomIconButton
             onTap={() => {
-              window.location.href = "/lesson";
+              navigate("/lesson");
             }}
           >
             <svg

@@ -16,8 +16,11 @@ import jawaban_b from "../../assets/video/kontrol_emosi/jawaban_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 function KontrolEmosi() {
+  const navigate = useNavigate();
+
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quizVideoEnded, setQuizVideoEnded] = useState(true);
 
@@ -51,7 +54,6 @@ function KontrolEmosi() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          // window.location.href = "/lesson";
           setQuizCount(quizCount + 1);
           setShowModal((prev) => !prev);
         }}
@@ -82,7 +84,7 @@ function KontrolEmosi() {
       </video>
       <div
         className={`${
-          quizVideoEnded ? "flex" : "hidden"
+          quizVideoEnded && materiVideoEnded ? "flex" : "hidden"
         } w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between`}
         style={{ backgroundImage: `url(${bg})` }}
       >
@@ -91,7 +93,7 @@ function KontrolEmosi() {
           <img src={question} alt="Question" className="w-[700px] h-48" />
           <CustomIconButton
             onTap={() => {
-              window.location.href = "/lesson";
+              navigate("/lesson");
             }}
           >
             <svg

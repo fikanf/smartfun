@@ -1,17 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import "./index.css";
-import App from "./App.jsx";
-import Account from "./Account.jsx";
-import Home from "./Home.jsx";
-import Lesson from "./Lesson.jsx";
+import App from "./App";
+import Account from "./Account";
+import Home from "./Home";
+
+import Lesson from "./Lesson";
 
 import TanggungJawab from "./pages/quiz/TanggungJawab";
 import KontrolEmosi from "./pages/quiz/KontrolEmosi";
+import Kejujuran from "./pages/quiz/Kejujuran";
+import Disiplin from "./pages/quiz/Disiplin";
 
-const router = createBrowserRouter([
+import Game from "./Game";
+import Puzzle from "./pages/game/Puzzle";
+
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -28,10 +34,6 @@ const router = createBrowserRouter([
     path: "/lesson",
     element: <Lesson />,
   },
-  // {
-  //   path: "/lesson/quiz",
-  //   element: <Quiz />,
-  // },
   {
     path: "/quiz/tanggung_jawab",
     element: <TanggungJawab />,
@@ -39,6 +41,22 @@ const router = createBrowserRouter([
   {
     path: "/quiz/kontrol_emosi",
     element: <KontrolEmosi />,
+  },
+  {
+    path: "/quiz/kejujuran",
+    element: <Kejujuran />,
+  },
+  {
+    path: "/quiz/disiplin",
+    element: <Disiplin />,
+  },
+  {
+    path: "/game",
+    element: <Game />,
+  },
+  {
+    path: "/game/puzzle",
+    element: <Puzzle />,
   },
 ]);
 

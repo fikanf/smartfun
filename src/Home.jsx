@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import { CustomButton } from "./components/CustomButton";
 import bg_menu from "./assets/video/bg_menu.mp4";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="static">
       <video autoPlay muted loop className="w-screen h-screen object-cover">
@@ -11,15 +15,7 @@ function Home() {
       <div className="absolute top-0 w-screen h-screen p-6 flex flex-col gap-6 justify-center">
         <CustomButton
           onTap={() => {
-            window.location.href = "/home";
-          }}
-          width="w-1/2"
-        >
-          <p className="text-6xl font-bold text-kuning">Tutorial</p>
-        </CustomButton>
-        <CustomButton
-          onTap={() => {
-            window.location.href = "/lesson";
+            navigate("/lesson");
           }}
           width="w-1/2"
         >
@@ -27,7 +23,15 @@ function Home() {
         </CustomButton>
         <CustomButton
           onTap={() => {
-            window.location.href = "/";
+            navigate("/game");
+          }}
+          width="w-1/2"
+        >
+          <p className="text-6xl font-bold text-kuning">Permainan</p>
+        </CustomButton>
+        <CustomButton
+          onTap={() => {
+            navigate("/");
           }}
           width="w-1/2"
         >

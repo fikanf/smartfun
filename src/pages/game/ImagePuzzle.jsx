@@ -54,7 +54,7 @@ function ImagePuzzle() {
       }, 2000); // Adjust the delay as needed
     } else {
       // Incorrect guess, show a message
-      toggleModal("Incorrect", "Try again");
+      toggleModal("Anda Salah", "Coba lagi yaa tahun depan!!!");
     }
   }
 

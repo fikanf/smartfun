@@ -1,3 +1,5 @@
+import React from "react";
+
 import PropTypes from "prop-types";
 
 function CustomModal({ show, title, desc, onClose }) {

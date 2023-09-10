@@ -30,6 +30,7 @@ function ImagePuzzle() {
   const [modalDesc, setmodalDesc] = useState("");
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showColor, setShowColor] = useState(false);
 
   function toggleModal(title, desc) {
     setmodalTitle(title);
@@ -39,12 +40,18 @@ function ImagePuzzle() {
 
   function handleGuess(guess) {
     if (guess === soal[currentQuestion].jawab) {
-      // Correct guess, move to the next question
-      setCurrentQuestion(currentQuestion + 1);
-      // If it was the last question, reset the game
-      if (currentQuestion === soal.length - 1) {
-        setCurrentQuestion(0);
-      }
+      // Correct guess, show the color image
+      setShowColor(true);
+      setTimeout(() => {
+        // Move to the next question after a delay
+        setCurrentQuestion(currentQuestion + 1);
+        // If it was the last question, reset the game
+        if (currentQuestion === soal.length - 1) {
+          setCurrentQuestion(0);
+        }
+        // Hide the color image for the next question
+        setShowColor(false);
+      }, 2000); // Adjust the delay as needed
     } else {
       // Incorrect guess, show a message
       toggleModal("Incorrect", "Try again");
@@ -87,20 +94,33 @@ function ImagePuzzle() {
             </svg>
           </CustomIconButton>
         </div>
-        <div className="h-full">
-          {soal.map((data, index) => {
-            return (
+        {soal.map((data, index) => {
+          return (
+            <div
+              key={index}
+              className={`${
+                index != currentQuestion ? "hidden" : ""
+              } h-full w-full relative`}
+            >
               <img
-                key={index}
                 src={data.black}
                 alt={data.jawab}
                 className={`${
                   index != currentQuestion ? "hidden" : ""
                 } h-full object-cover mx-auto`}
               />
-            );
-          })}
-        </div>
+              <img
+                src={data.color}
+                alt={data.jawab}
+                className={`${
+                  index != currentQuestion ? "hidden" : ""
+                } absolute top-0 bottom-0 left-0 right-0 m-auto h-full object-cover transition-opacity duration-1000 ${
+                  showColor ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            </div>
+          );
+        })}
         <div className="flex flex-row w-full justify-between">
           {jawaban.map((data, index) => {
             return (

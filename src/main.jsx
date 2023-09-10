@@ -15,6 +15,7 @@ import Kejujuran from "./pages/quiz/Kejujuran";
 import Disiplin from "./pages/quiz/Disiplin";
 
 import Game from "./Game";
+
 import Puzzle from "./pages/game/Puzzle";
 import ImagePuzzle from "./pages/game/ImagePuzzle";
 

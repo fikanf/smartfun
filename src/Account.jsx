@@ -1,14 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 import { CustomIconButton } from "./components/CustomButton";
 import CustomTemplate from "./components/CustomTemplate";
 
 function Account() {
+  const navigate = useNavigate();
+
   return (
     <div className="p-6 h-screen flex flex-col justify-between">
       <div className="flex flex-row gap-4">
         <CustomTemplate title="1" message="Halo" width="w-full" />
         <CustomIconButton
           onTap={() => {
-            window.location.href = "/";
+            navigate("/");
           }}
         >
           <svg

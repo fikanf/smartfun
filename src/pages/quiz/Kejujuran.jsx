@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import quiz from "../../assets/illustration/quiz_title.png";
 
@@ -13,6 +14,8 @@ import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
 
 function Kejujuran() {
+  const navigate = useNavigate();
+
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quiz1VideoEnded, setQuiz1VideoEnded] = useState(true);
   const [quiz2VideoEnded, setQuiz2VideoEnded] = useState(false);
@@ -52,7 +55,6 @@ function Kejujuran() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          // window.location.href = "/lesson";
           setQuizCount(quizCount + 1);
           setShowModal((prev) => !prev);
 
@@ -121,7 +123,7 @@ function Kejujuran() {
             <img src={quiz} alt="Quiz Title" className="w-48 h-24" />
             <CustomIconButton
               onTap={() => {
-                window.location.href = "/lesson";
+                navigate("/lesson");
               }}
             >
               <svg
@@ -189,7 +191,7 @@ function Kejujuran() {
             <img src={quiz} alt="Quiz Title" className="w-48 h-24" />
             <CustomIconButton
               onTap={() => {
-                window.location.href = "/lesson";
+                navigate("/lesson");
               }}
             >
               <svg

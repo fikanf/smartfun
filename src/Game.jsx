@@ -1,16 +1,21 @@
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { useRef } from "react";
 import PropTypes from "prop-types";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import bg from "./assets/illustration/bg_papan_tulis.png";
 
 import { CustomIconButton } from "./components/CustomButton";
+import { useNavigate } from "react-router-dom";
 
-const quiz = [
+const game = [
   {
     title: "Puzzle",
     path: "/game/puzzle",
+  },
+  {
+    title: "Tebak Gambar",
+    path: "/game/image_puzzle",
   },
 ];
 
@@ -31,6 +36,7 @@ const responsive = {
 
 function Game() {
   const carouselRef = useRef(null);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -40,7 +46,7 @@ function Game() {
       <div className="w-full flex justify-end">
         <CustomIconButton
           onTap={() => {
-            window.location.href = "/home";
+            navigate("/home");
           }}
         >
           <svg
@@ -81,14 +87,14 @@ function Game() {
           arrows={false}
           className="w-full"
         >
-          {quiz.map((data, index) => {
+          {game.map((data, index) => {
             return (
               <div key={index} className="mx-20">
                 <CardLesson
                   title={data.title}
                   index={++index}
                   onTap={() => {
-                    window.location.href = data.path;
+                    navigate(data.path);
                   }}
                 />
               </div>

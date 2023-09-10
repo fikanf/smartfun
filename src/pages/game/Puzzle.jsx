@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
@@ -8,7 +11,6 @@ import ravena from "../../assets/illustration/puzzle/ravena.png";
 import raveni from "../../assets/illustration/puzzle/raveni.png";
 
 import { CustomIconButton } from "../../components/CustomButton";
-import { useEffect, useState } from "react";
 import CustomModal from "../../components/CustomModal";
 
 const images = [
@@ -24,6 +26,8 @@ const images = [
 ];
 
 function Puzzle() {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
   const [modalDesc, setmodalDesc] = useState("");
@@ -86,8 +90,7 @@ function Puzzle() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          window.location.href = "/game";
-          // setShowModal((prev) => !prev);
+          navigate("/game");
         }}
       />
       <div
@@ -98,7 +101,7 @@ function Puzzle() {
           <img src={puzzle} alt="Puzzle Title" className="w-60 h-24" />
           <CustomIconButton
             onTap={() => {
-              window.location.href = "/game";
+              navigate("/game");
             }}
           >
             <svg

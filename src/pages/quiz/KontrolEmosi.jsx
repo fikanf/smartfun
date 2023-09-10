@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import bg from "../../assets/illustration/bg_field.png";
 import quiz from "../../assets/illustration/quiz_title.png";
@@ -18,6 +19,8 @@ import CustomModal from "../../components/CustomModal";
 import { CustomIconButton } from "../../components/CustomButton";
 
 function KontrolEmosi() {
+  const navigate = useNavigate();
+
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quizVideoEnded, setQuizVideoEnded] = useState(true);
 
@@ -51,7 +54,6 @@ function KontrolEmosi() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          // window.location.href = "/lesson";
           setQuizCount(quizCount + 1);
           setShowModal((prev) => !prev);
         }}
@@ -91,7 +93,7 @@ function KontrolEmosi() {
           <img src={question} alt="Question" className="w-[700px] h-48" />
           <CustomIconButton
             onTap={() => {
-              window.location.href = "/lesson";
+              navigate("/lesson");
             }}
           >
             <svg

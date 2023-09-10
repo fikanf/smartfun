@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import quiz from "../../assets/illustration/quiz_title.png";
 import bg from "../../assets/illustration/bg_lab.png";
@@ -36,6 +37,8 @@ const soal = [
 ];
 
 function Disiplin() {
+  const navigate = useNavigate();
+
   const [materiVideoEnded, setMateriVideoEnded] = useState(false);
   const [quizVideoEnded, setQuizVideoEnded] = useState(true);
 
@@ -69,7 +72,6 @@ function Disiplin() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          // window.location.href = "/lesson";
           setQuizCount(quizCount + 1);
           setShowModal((prev) => !prev);
         }}
@@ -120,7 +122,7 @@ function Disiplin() {
           })}
           <CustomIconButton
             onTap={() => {
-              window.location.href = "/lesson";
+              navigate("/lesson");
             }}
           >
             <svg

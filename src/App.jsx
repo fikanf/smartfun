@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import bg_utama from "./assets/video/bg_utama.mp4";
 import { CustomButton, CustomIconButton } from "./components/CustomButton";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <div className="static font-league">
       <video autoPlay muted loop className="w-screen h-screen object-cover">
@@ -9,11 +13,10 @@ function App() {
         Your browser does not support the video tag.
       </video>
       <div className="absolute top-0 p-6 w-full h-full flex flex-col items-center justify-between">
-        {/* <CustomTemplate title="1" message="Halo" width="w-full" /> */}
         <div></div>
         <CustomButton
           onTap={() => {
-            window.location.href = "/home";
+            navigate("/home");
           }}
         >
           <p className="text-6xl font-bold text-kuning mt-3">MULAI</p>
@@ -22,7 +25,7 @@ function App() {
       <div className="absolute bottom-0 right-0 p-6">
         <CustomIconButton
           onTap={() => {
-            window.location.href = "/account";
+            navigate("/account");
           }}
         >
           <svg

@@ -8,10 +8,14 @@ import bg from "./assets/illustration/bg_papan_tulis.png";
 import { CustomIconButton } from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 
-const quiz = [
+const game = [
   {
     title: "Puzzle",
     path: "/game/puzzle",
+  },
+  {
+    title: "Tebak Gambar",
+    path: "/game/image_puzzle",
   },
 ];
 
@@ -83,7 +87,7 @@ function Game() {
           arrows={false}
           className="w-full"
         >
-          {quiz.map((data, index) => {
+          {game.map((data, index) => {
             return (
               <div key={index} className="mx-20">
                 <CardLesson

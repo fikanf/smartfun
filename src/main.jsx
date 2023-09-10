@@ -16,6 +16,7 @@ import Disiplin from "./pages/quiz/Disiplin";
 
 import Game from "./Game";
 import Puzzle from "./pages/game/Puzzle";
+import ImagePuzzle from "./pages/game/ImagePuzzle";
 
 const router = createHashRouter([
   {
@@ -57,6 +58,10 @@ const router = createHashRouter([
   {
     path: "/game/puzzle",
     element: <Puzzle />,
+  },
+  {
+    path: "/game/image_puzzle",
+    element: <ImagePuzzle />,
   },
 ]);
 

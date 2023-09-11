@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import bg_utama from "./assets/video/bg_utama.mp4";

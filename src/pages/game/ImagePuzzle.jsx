@@ -47,7 +47,10 @@ function ImagePuzzle() {
         setCurrentQuestion(currentQuestion + 1);
         // If it was the last question, reset the game
         if (currentQuestion === soal.length - 1) {
-          setCurrentQuestion(0);
+          toggleModal(
+            "Anda Benar",
+            "Selamat anda telah menjawab semua gambar yang ada"
+          );
         }
         // Hide the color image for the next question
         setShowColor(false);

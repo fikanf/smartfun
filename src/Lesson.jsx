@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useRef } from "react";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";

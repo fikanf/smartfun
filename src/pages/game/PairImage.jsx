@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import img1 from "../../assets/illustration/puzzle/1.jpg";
-import img2 from "../../assets/illustration/puzzle/2.jpg";
-import img3 from "../../assets/illustration/puzzle/3.jpg";
-import img4 from "../../assets/illustration/puzzle/4.jpg";
-import img5 from "../../assets/illustration/puzzle/5.jpg";
+import img1 from "../../assets/illustration/pair_image/1.jpg";
+import img2 from "../../assets/illustration/pair_image/2.jpg";
+import img3 from "../../assets/illustration/pair_image/3.jpg";
+import img4 from "../../assets/illustration/pair_image/4.jpg";
+import img5 from "../../assets/illustration/pair_image/5.jpg";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
@@ -118,32 +118,6 @@ function PairImage() {
               />
             </svg>
           </CustomIconButton>
-        </div>
-        <div className="grid grid-rows-3 grid-flow-col place-content-center gap-4 mt-6">
-          {shuffledImages.map((data, index) => {
-            return (
-              <button
-                key={index}
-                type="button"
-                onClick={() =>
-                  handleImageClick(data.id, data.uniqueId, data.image)
-                }
-                className="w-60 h-48 bg-biru"
-              >
-                <img
-                  src={data.image}
-                  alt={`Puzzle Image ${index}`}
-                  className={`w-60 h-48 object-fill object-top ${
-                    selectedImages.find(
-                      (image) => image.uniqueId === data.uniqueId
-                    ) || matchedImages.includes(data.id)
-                      ? ""
-                      : "hidden"
-                  }`}
-                />
-              </button>
-            );
-          })}
         </div>
       </div>
     </>

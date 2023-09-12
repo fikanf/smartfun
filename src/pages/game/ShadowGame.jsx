@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import butterfly_black from "../../assets/illustration/tebak_gambar/butterfly_black.png";
-import butterfly_color from "../../assets/illustration/tebak_gambar/butterfly_color.png";
-import dog_black from "../../assets/illustration/tebak_gambar/dog_black.png";
-import dog_color from "../../assets/illustration/tebak_gambar/dog_color.png";
-import dolphin_black from "../../assets/illustration/tebak_gambar/dolphin_black.png";
-import dolphin_color from "../../assets/illustration/tebak_gambar/dolphin_color.png";
+import butterfly_black from "../../assets/illustration/shadow_game/butterfly_black.png";
+import butterfly_color from "../../assets/illustration/shadow_game/butterfly_color.png";
+import dog_black from "../../assets/illustration/shadow_game/dog_black.png";
+import dog_color from "../../assets/illustration/shadow_game/dog_color.png";
+import dolphin_black from "../../assets/illustration/shadow_game/dolphin_black.png";
+import dolphin_color from "../../assets/illustration/shadow_game/dolphin_color.png";
 
 import { CustomButton, CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";

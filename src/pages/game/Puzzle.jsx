@@ -69,7 +69,6 @@ function Puzzle() {
 
   useEffect(() => {
     if (matchedImages.length === 4) {
-      // alert("Congratulations, you have found all matches!");
       toggleModal(
         "Anda Benar",
         "Selamat anda telah menemukan semua gambar yang sama"
@@ -134,7 +133,7 @@ function Puzzle() {
                 <img
                   src={data.image}
                   alt={`Puzzle Image ${index}`}
-                  className={`w-60 h-48 object-cover object-top ${
+                  className={`w-60 h-48 object-fill object-top ${
                     selectedImages.find(
                       (image) => image.uniqueId === data.uniqueId
                     ) || matchedImages.includes(data.id)

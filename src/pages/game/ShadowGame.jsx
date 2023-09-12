@@ -24,7 +24,7 @@ const soal = [
   { jawab: jawaban[2], black: dolphin_black, color: dolphin_color },
 ];
 
-function ImagePuzzle() {
+function ShadowGame() {
   const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
@@ -140,4 +140,4 @@ function ImagePuzzle() {
   );
 }
 
-export default ImagePuzzle;
+export default ShadowGame;

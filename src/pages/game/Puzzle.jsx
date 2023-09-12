@@ -6,25 +6,25 @@ import { useNavigate } from "react-router-dom";
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import fika from "../../assets/illustration/puzzle/fika.png";
-import hansel from "../../assets/illustration/puzzle/hansel.png";
-import ivana from "../../assets/illustration/puzzle/ivana.png";
-import ravena from "../../assets/illustration/puzzle/ravena.png";
-import raveni from "../../assets/illustration/puzzle/raveni.png";
+import img1 from "../../assets/illustration/puzzle/1.jpg";
+import img2 from "../../assets/illustration/puzzle/2.jpg";
+import img3 from "../../assets/illustration/puzzle/3.jpg";
+import img4 from "../../assets/illustration/puzzle/4.jpg";
+import img5 from "../../assets/illustration/puzzle/5.jpg";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
 
 const images = [
-  { id: 1, uniqueId: 1, image: fika },
-  { id: 1, uniqueId: 2, image: fika },
-  { id: 2, uniqueId: 3, image: hansel },
-  { id: 3, uniqueId: 4, image: ivana },
-  { id: 3, uniqueId: 5, image: ivana },
-  { id: 4, uniqueId: 6, image: ravena },
-  { id: 4, uniqueId: 7, image: ravena },
-  { id: 5, uniqueId: 8, image: raveni },
-  { id: 5, uniqueId: 9, image: raveni },
+  { id: 1, uniqueId: 1, image: img1 },
+  { id: 1, uniqueId: 2, image: img1 },
+  { id: 2, uniqueId: 3, image: img2 },
+  { id: 3, uniqueId: 4, image: img3 },
+  { id: 3, uniqueId: 5, image: img3 },
+  { id: 4, uniqueId: 6, image: img4 },
+  { id: 4, uniqueId: 7, image: img4 },
+  { id: 5, uniqueId: 8, image: img5 },
+  { id: 5, uniqueId: 9, image: img5 },
 ];
 
 function Puzzle() {

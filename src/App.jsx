@@ -24,7 +24,7 @@ function App() {
           <p className="text-6xl font-bold text-kuning mt-3">MULAI</p>
         </CustomButton>
       </div>
-      <div className="absolute bottom-0 right-0 p-6">
+      {/* <div className="absolute bottom-0 right-0 p-6">
         <CustomIconButton
           onTap={() => {
             navigate("/account");
@@ -43,7 +43,7 @@ function App() {
             />
           </svg>
         </CustomIconButton>
-      </div>
+      </div> */}
     </div>
   );
 }

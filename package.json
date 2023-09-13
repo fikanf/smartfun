@@ -37,6 +37,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-jigsaw-puzzle": "^1.0.5",
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.15.0"
   },

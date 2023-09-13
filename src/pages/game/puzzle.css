@@ -1,0 +1,9 @@
+.jigsaw-puzzle {
+  width: 100vh;
+  height: 100vh;
+  /* border: 2px solid black; */
+  margin: auto;
+  box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.25);
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}

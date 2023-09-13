@@ -1,39 +1,31 @@
 import React from "react";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { JigsawPuzzle } from "react-jigsaw-puzzle";
+import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
+
+import "./puzzle.css";
 
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
 import puzzle1 from "../../assets/illustration/puzzle/puzzle1.jpg";
-
-import puzzle1_answer1 from "../../assets/illustration/puzzle/puzzle1_answer1.jpeg";
-import puzzle1_answer2 from "../../assets/illustration/puzzle/puzzle1_answer2.jpeg";
-import puzzle1_answer3 from "../../assets/illustration/puzzle/puzzle1_answer3.jpeg";
-import puzzle1_answer4 from "../../assets/illustration/puzzle/puzzle1_answer4.jpeg";
-import puzzle1_answer5 from "../../assets/illustration/puzzle/puzzle1_answer5.jpeg";
-import puzzle1_answer6 from "../../assets/illustration/puzzle/puzzle1_answer6.jpeg";
+import puzzle2 from "../../assets/illustration/puzzle/puzzle2.jpg";
+import puzzle3 from "../../assets/illustration/puzzle/puzzle3.jpg";
+import puzzle4 from "../../assets/illustration/puzzle/puzzle4.jpg";
+import puzzle5 from "../../assets/illustration/puzzle/puzzle5.jpg";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
 
-const soal = [
-  {
-    puzzle: puzzle1,
-    answer: [
-      puzzle1_answer1,
-      puzzle1_answer2,
-      puzzle1_answer3,
-      puzzle1_answer4,
-      puzzle1_answer5,
-      puzzle1_answer6,
-    ],
-  },
-];
+const soal = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
 function Puzzle() {
   const navigate = useNavigate();
+
+  const [puzzleIndex, setPuzzleIndex] = useState(0);
 
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setmodalTitle] = useState("");
@@ -52,7 +44,8 @@ function Puzzle() {
         title={modalTitle}
         desc={modalDesc}
         onClose={() => {
-          navigate("/game");
+          // navigate("/game");
+          setPuzzleIndex(puzzleIndex + 1);
         }}
       />
       <div
@@ -80,23 +73,24 @@ function Puzzle() {
             </svg>
           </CustomIconButton>
         </div>
-        <div className="h-[400px]">
-          {soal.map((data, index) => {
-            return (
-              <img
-                key={index}
-                src={data.puzzle}
-                alt="Puzzle Output"
-                className={`${index == 0 ? "" : "hidden"} h-[400px] mx-auto`}
+        {soal.map((data, index) => {
+          return (
+            <div
+              key={index}
+              className={`${index == puzzleIndex ? "" : "hidden"} h-full`}
+            >
+              <JigsawPuzzle
+                imageSrc={data}
+                rows={puzzleIndex == 0 || puzzleIndex == 1 ? 2 : 3}
+                columns={3}
+                onSolved={() => {
+                  setPuzzleIndex(puzzleIndex + 1);
+                }}
+                className="jigsaw-puzzle"
               />
-            );
-          })}
-        </div>
-        <div className="flex flex-row h-[200px] justify-between">
-          {soal[0].answer.map((data, index) => {
-            return <img key={index} src={data} className="h-full" />;
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

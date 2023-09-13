@@ -119,6 +119,32 @@ function PairImage() {
             </svg>
           </CustomIconButton>
         </div>
+        <div className="grid grid-rows-3 grid-flow-col place-content-center gap-4 mt-6">
+          {shuffledImages.map((data, index) => {
+            return (
+              <button
+                key={index}
+                type="button"
+                onClick={() =>
+                  handleImageClick(data.id, data.uniqueId, data.image)
+                }
+                className="w-60 h-48 bg-biru"
+              >
+                <img
+                  src={data.image}
+                  alt={`Puzzle Image ${index}`}
+                  className={`w-60 h-48 object-fill object-top ${
+                    selectedImages.find(
+                      (image) => image.uniqueId === data.uniqueId
+                    ) || matchedImages.includes(data.id)
+                      ? ""
+                      : "hidden"
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </>
   );

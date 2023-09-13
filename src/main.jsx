@@ -16,9 +16,9 @@ import Disiplin from "./pages/quiz/Disiplin";
 
 import Game from "./Game";
 
-import Puzzle from "./pages/game/PairImage";
 import PairImage from "./pages/game/PairImage";
 import ShadowGame from "./pages/game/ShadowGame";
+import Puzzle from "./pages/game/Puzzle";
 
 const router = createHashRouter([
   {

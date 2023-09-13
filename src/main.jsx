@@ -16,8 +16,9 @@ import Disiplin from "./pages/quiz/Disiplin";
 
 import Game from "./Game";
 
+import PairImage from "./pages/game/PairImage";
+import ShadowGame from "./pages/game/ShadowGame";
 import Puzzle from "./pages/game/Puzzle";
-import ImagePuzzle from "./pages/game/ImagePuzzle";
 
 const router = createHashRouter([
   {
@@ -57,12 +58,16 @@ const router = createHashRouter([
     element: <Game />,
   },
   {
-    path: "/game/puzzle",
-    element: <Puzzle />,
+    path: "/game/pair_image",
+    element: <PairImage />,
   },
   {
-    path: "/game/image_puzzle",
-    element: <ImagePuzzle />,
+    path: "/game/shadow_game",
+    element: <ShadowGame />,
+  },
+  {
+    path: "/game/puzzle",
+    element: <Puzzle />,
   },
 ]);
 

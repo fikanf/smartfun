@@ -6,25 +6,30 @@ import { useNavigate } from "react-router-dom";
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import img1 from "../../assets/illustration/puzzle/1.jpg";
-import img2 from "../../assets/illustration/puzzle/2.jpg";
-import img3 from "../../assets/illustration/puzzle/3.jpg";
-import img4 from "../../assets/illustration/puzzle/4.jpg";
-import img5 from "../../assets/illustration/puzzle/5.jpg";
+import puzzle1 from "../../assets/illustration/puzzle/puzzle1.jpg";
+
+import puzzle1_answer1 from "../../assets/illustration/puzzle/puzzle1_answer1.jpeg";
+import puzzle1_answer2 from "../../assets/illustration/puzzle/puzzle1_answer2.jpeg";
+import puzzle1_answer3 from "../../assets/illustration/puzzle/puzzle1_answer3.jpeg";
+import puzzle1_answer4 from "../../assets/illustration/puzzle/puzzle1_answer4.jpeg";
+import puzzle1_answer5 from "../../assets/illustration/puzzle/puzzle1_answer5.jpeg";
+import puzzle1_answer6 from "../../assets/illustration/puzzle/puzzle1_answer6.jpeg";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
 
-const images = [
-  { id: 1, uniqueId: 1, image: img1 },
-  { id: 1, uniqueId: 2, image: img1 },
-  { id: 2, uniqueId: 3, image: img2 },
-  { id: 3, uniqueId: 4, image: img3 },
-  { id: 3, uniqueId: 5, image: img3 },
-  { id: 4, uniqueId: 6, image: img4 },
-  { id: 4, uniqueId: 7, image: img4 },
-  { id: 5, uniqueId: 8, image: img5 },
-  { id: 5, uniqueId: 9, image: img5 },
+const soal = [
+  {
+    puzzle: puzzle1,
+    answer: [
+      puzzle1_answer1,
+      puzzle1_answer2,
+      puzzle1_answer3,
+      puzzle1_answer4,
+      puzzle1_answer5,
+      puzzle1_answer6,
+    ],
+  },
 ];
 
 function Puzzle() {
@@ -40,50 +45,6 @@ function Puzzle() {
     setShowModal((prev) => !prev);
   }
 
-  const [shuffledImages, setShuffledImages] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [matchedImages, setMatchedImages] = useState([]);
-
-  function shuffleImages(images) {
-    for (let i = images.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [images[i], images[j]] = [images[j], images[i]];
-    }
-    return images;
-  }
-
-  useEffect(() => {
-    setShuffledImages(shuffleImages(images));
-  }, []);
-
-  useEffect(() => {
-    if (selectedImages.length === 2) {
-      if (selectedImages[0].id === selectedImages[1].id) {
-        setMatchedImages((prev) => [...prev, selectedImages[0].id]);
-      }
-      setTimeout(() => {
-        setSelectedImages([]);
-      }, 1000);
-    }
-  }, [selectedImages]);
-
-  useEffect(() => {
-    if (matchedImages.length === 4) {
-      toggleModal(
-        "Anda Benar",
-        "Selamat anda telah menemukan semua gambar yang sama"
-      );
-    }
-  }, [matchedImages]);
-
-  function handleImageClick(id, uniqueId, image) {
-    if (selectedImages.length === 2) {
-      return;
-    }
-
-    setSelectedImages((prev) => [...prev, { id, uniqueId, image }]);
-  }
-
   return (
     <>
       <CustomModal
@@ -95,7 +56,7 @@ function Puzzle() {
         }}
       />
       <div
-        className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col justify-between"
+        className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col gap-6 justify-between"
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="flex flex-row justify-between">
@@ -119,30 +80,21 @@ function Puzzle() {
             </svg>
           </CustomIconButton>
         </div>
-        <div className="grid grid-rows-3 grid-flow-col place-content-center gap-4 mt-6">
-          {shuffledImages.map((data, index) => {
+        <div className="h-[400px]">
+          {soal.map((data, index) => {
             return (
-              <button
+              <img
                 key={index}
-                type="button"
-                onClick={() =>
-                  handleImageClick(data.id, data.uniqueId, data.image)
-                }
-                className="w-60 h-48 bg-biru"
-              >
-                <img
-                  src={data.image}
-                  alt={`Puzzle Image ${index}`}
-                  className={`w-60 h-48 object-fill object-top ${
-                    selectedImages.find(
-                      (image) => image.uniqueId === data.uniqueId
-                    ) || matchedImages.includes(data.id)
-                      ? ""
-                      : "hidden"
-                  }`}
-                />
-              </button>
+                src={data.puzzle}
+                alt="Puzzle Output"
+                className={`${index == 0 ? "" : "hidden"} h-[400px] mx-auto`}
+              />
             );
+          })}
+        </div>
+        <div className="flex flex-row h-[200px] justify-between">
+          {soal[0].answer.map((data, index) => {
+            return <img key={index} src={data} className="h-full" />;
           })}
         </div>
       </div>

@@ -12,12 +12,16 @@ import { useNavigate } from "react-router-dom";
 
 const game = [
   {
-    title: "Puzzle",
-    path: "/game/puzzle",
+    title: "Cocokan Gambar",
+    path: "/game/pair_image",
   },
   {
     title: "Tebak Gambar",
-    path: "/game/image_puzzle",
+    path: "/game/shadow_game",
+  },
+  {
+    title: "Puzzle",
+    path: "/game/puzzle",
   },
 ];
 

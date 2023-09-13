@@ -71,7 +71,10 @@ function ShadowGame() {
         desc={modalDesc}
         onClose={() => {
           setShowModal((prev) => !prev);
-          // navigate("/game");
+
+          if (currentQuestion === soal.length - 1) {
+            navigate("/game");
+          }
         }}
       />
       <div

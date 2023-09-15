@@ -11,11 +11,11 @@ import "./puzzle.css";
 import puzzle from "../../assets/illustration/puzzle_title.png";
 import bg from "../../assets/illustration/bg_field.png";
 
-import puzzle1 from "../../assets/illustration/puzzle/puzzle1.jpg";
+import puzzle1 from "../../assets/illustration/puzzle/puzzle1.png";
 import puzzle2 from "../../assets/illustration/puzzle/puzzle2.jpg";
-import puzzle3 from "../../assets/illustration/puzzle/puzzle3.jpg";
-import puzzle4 from "../../assets/illustration/puzzle/puzzle4.jpg";
-import puzzle5 from "../../assets/illustration/puzzle/puzzle5.jpg";
+import puzzle3 from "../../assets/illustration/puzzle/puzzle3.png";
+import puzzle4 from "../../assets/illustration/puzzle/puzzle4.png";
+import puzzle5 from "../../assets/illustration/puzzle/puzzle5.png";
 
 import { CustomIconButton } from "../../components/CustomButton";
 import CustomModal from "../../components/CustomModal";
@@ -77,12 +77,14 @@ function Puzzle() {
           return (
             <div
               key={index}
-              className={`${index == puzzleIndex ? "" : "hidden"} h-full`}
+              className={`${
+                index == puzzleIndex ? "" : "hidden"
+              } h-full flex items-center`}
             >
               <JigsawPuzzle
                 imageSrc={data}
                 rows={puzzleIndex == 0 || puzzleIndex == 1 ? 2 : 3}
-                columns={3}
+                columns={puzzleIndex == 0 || puzzleIndex == 1 ? 3 : 4}
                 onSolved={() => {
                   setPuzzleIndex(puzzleIndex + 1);
                 }}

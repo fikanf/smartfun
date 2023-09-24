@@ -95,7 +95,7 @@ function KontrolEmosi() {
           Your browser does not support the video tag.
         </video>
       )}
-      {quizCount >= 1 && (
+      {quizCount == 2 && (
         <div
           className="flex w-screen h-screen bg-fixed bg-cover p-6 flex-col justify-between"
           style={{ backgroundImage: `url(${bg})` }}

@@ -72,9 +72,7 @@ function ShadowGame() {
         onClose={() => {
           setShowModal((prev) => !prev);
 
-          if (currentQuestion === soal.length - 1) {
-            navigate("/game");
-          }
+          navigate("/game");
         }}
       />
       <div

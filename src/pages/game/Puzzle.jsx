@@ -18,7 +18,6 @@ import puzzle4 from "../../assets/illustration/puzzle/puzzle4.png";
 import puzzle5 from "../../assets/illustration/puzzle/puzzle5.png";
 
 import { CustomIconButton } from "../../components/CustomButton";
-import CustomModal from "../../components/CustomModal";
 
 const soal = [puzzle1, puzzle2, puzzle3, puzzle4, puzzle5];
 
@@ -27,27 +26,8 @@ function Puzzle() {
 
   const [puzzleIndex, setPuzzleIndex] = useState(0);
 
-  const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setmodalTitle] = useState("");
-  const [modalDesc, setmodalDesc] = useState("");
-
-  function toggleModal(title, desc) {
-    setmodalTitle(title);
-    setmodalDesc(desc);
-    setShowModal((prev) => !prev);
-  }
-
   return (
     <>
-      <CustomModal
-        show={showModal}
-        title={modalTitle}
-        desc={modalDesc}
-        onClose={() => {
-          // navigate("/game");
-          setPuzzleIndex(puzzleIndex + 1);
-        }}
-      />
       <div
         className="w-screen h-screen bg-fixed bg-cover p-6 flex flex-col gap-6 justify-between"
         style={{ backgroundImage: `url(${bg})` }}

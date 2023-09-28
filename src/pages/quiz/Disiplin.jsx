@@ -22,7 +22,7 @@ import disiplin_3_a from "../../assets/video/disiplin/kuis3_a.mp4";
 import disiplin_3_b from "../../assets/video/disiplin/kuis3_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
-import { CustomIconButton } from "../../components/CustomButton";
+import { CustomButton, CustomIconButton } from "../../components/CustomButton";
 
 function Disiplin() {
   const navigate = useNavigate();
@@ -60,7 +60,19 @@ function Disiplin() {
           setShowModal((prev) => !prev);
         }}
       />
-      <div className="fixed z-50 top-0 right-0 p-6">
+      <div className="fixed z-50 top-0 flex flex-row-reverse w-full justify-between p-6">
+        {quizCount < 2 || quizCount === 3 || quizCount === 5 ? (
+          <CustomButton
+            width="w-60"
+            onTap={() => {
+              setQuizCount(quizCount + 1);
+            }}
+          >
+            <p className="text-6xl font-bold text-kuning mt-3 ">SKIP</p>
+          </CustomButton>
+        ) : (
+          <></>
+        )}
         <CustomIconButton
           onTap={() => {
             navigate("/lesson");

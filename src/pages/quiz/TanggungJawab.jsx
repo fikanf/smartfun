@@ -22,7 +22,7 @@ import tanggung_jawab_3_a from "../../assets/video/tanggung_jawab/kuis3_a.mp4";
 import tanggung_jawab_3_b from "../../assets/video/tanggung_jawab/kuis3_b.mp4";
 
 import CustomModal from "../../components/CustomModal";
-import { CustomIconButton } from "../../components/CustomButton";
+import { CustomButton, CustomIconButton } from "../../components/CustomButton";
 
 const soal = [
   {
@@ -78,7 +78,19 @@ function TanggungJawab() {
           setShowModal((prev) => !prev);
         }}
       />
-      <div className="fixed z-50 top-0 right-0 p-6">
+      <div className="fixed z-50 top-0 flex flex-row-reverse w-full justify-between p-6">
+        {videoCount < 2 || videoCount === 3 ? (
+          <CustomButton
+            width="w-60"
+            onTap={() => {
+              setVideoCount(videoCount + 1);
+            }}
+          >
+            <p className="text-6xl font-bold text-kuning mt-3 ">SKIP</p>
+          </CustomButton>
+        ) : (
+          <></>
+        )}
         <CustomIconButton
           onTap={() => {
             navigate("/lesson");

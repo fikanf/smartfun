@@ -13,7 +13,7 @@ import kuis_kejujuran_2_cerita from "../../assets/video/kejujuran/kuis_kejujuran
 import kuis_kejujuran_2_soal from "../../assets/video/kejujuran/kuis_kejujuran_2_soal.mp4";
 
 import CustomModal from "../../components/CustomModal";
-import { CustomIconButton } from "../../components/CustomButton";
+import { CustomButton, CustomIconButton } from "../../components/CustomButton";
 
 function Kejujuran() {
   const navigate = useNavigate();
@@ -50,7 +50,19 @@ function Kejujuran() {
           setShowModal((prev) => !prev);
         }}
       />
-      <div className="fixed z-50 top-0 right-0 p-6">
+      <div className="fixed z-50 top-0 flex flex-row-reverse w-full justify-between p-6">
+        {quizCount < 2 || quizCount === 3 ? (
+          <CustomButton
+            width="w-60"
+            onTap={() => {
+              setQuizCount(quizCount + 1);
+            }}
+          >
+            <p className="text-6xl font-bold text-kuning mt-3 ">SKIP</p>
+          </CustomButton>
+        ) : (
+          <></>
+        )}
         <CustomIconButton
           onTap={() => {
             navigate("/lesson");
